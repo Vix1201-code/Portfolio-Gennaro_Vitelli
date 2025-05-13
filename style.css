@@ -1,0 +1,474 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: url('sfondo.jpg') center center / cover no-repeat fixed;
+  color: #f5f5f5;
+  line-height: 1.8;
+}
+
+/* Tipografia */
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: #2b6777;
+  margin-bottom: 20px;
+}
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.4rem; }
+h3 { font-size: 1.8rem; }
+
+p {
+  font-size: 1.4rem;
+  margin: 25px 0;
+  color: #444;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+a:hover, a:focus {
+  color: #52ab98;
+  transform: scale(1.05);
+}
+
+/* Sezioni */
+section {
+  margin: 100px auto 60px;
+  padding: 40px;
+  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Header / Navbar */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid #a8dadc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  animation: slideDown 0.4s ease-out;
+  transition: transform 0.3s ease;
+}
+header.hidden {
+  transform: translateY(-100%);
+}
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #2b6777;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+.nav-links li a {
+  font-size: 14px;
+  font-weight: bold;
+  color: #2b6777;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.nav-links li a:hover {
+  color: #52ab98;
+  transform: translateY(-5px);
+  letter-spacing: 2px;
+}
+
+/* Animazioni */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animated-text {
+  opacity: 0;
+}
+.animated-text.animate {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Progetto */
+.progetto {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.progetto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Effetti Speciali */
+.sun-effect, .climate-effect {
+  position: relative;
+  overflow: hidden;
+}
+.sky, .climate-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  border-radius: 12px;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+.sky {
+  background: linear-gradient(to bottom, #87ceeb 0%, #f0f8ff 100%);
+}
+.sun {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 80px; height: 80px;
+  background: radial-gradient(circle, #FFD700, #FFA500);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.6s ease-in-out;
+  box-shadow: 0 0 20px 10px rgba(255, 215, 0, 0.5);
+  z-index: 1;
+}
+.sun-effect:hover .sun { transform: translate(-50%, -50%) scale(1); }
+.sun-effect:hover .sky { opacity: 1; }
+.sun-effect:hover h3 {
+  color: #f39c12;
+  text-shadow: 0 0 10px #f39c12;
+}
+
+.climate-bg {
+  background: linear-gradient(to bottom, #a8e6cf 0%, #dcedc1 100%);
+}
+.leaf {
+  position: absolute;
+  top: -80px; left: 50%;
+  width: 40px; height: 60px;
+  background: radial-gradient(ellipse at center, #81c784 0%, #4caf50 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform: translateX(-50%) scale(0) rotate(0deg);
+  box-shadow: 0 0 10px 4px rgba(76, 175, 80, 0.4);
+  transition: transform 0.8s ease, top 0.8s ease;
+  z-index: 1;
+}
+.leaf::after {
+  content: '';
+  position: absolute;
+  bottom: -10px; left: 50%;
+  width: 4px; height: 15px;
+  background-color: #388e3c;
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+.climate-effect:hover .leaf {
+  top: 20%;
+  transform: translateX(-50%) scale(1) rotate(10deg);
+}
+.climate-effect:hover .climate-bg { opacity: 1; }
+.climate-effect:hover h3 {
+  color: #388e3c;
+  text-shadow: 0 0 10px #4caf50;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #555;
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    background: rgba(255, 255, 255, 0.95);
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  h1, h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Immagini responsivi */
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 30px; /* Allinea l'immagine al centro e lascia un margine inferiore */
+}
+
+/* In caso di immagini come QR o altre immagini che potrebbero essere più larghe, usa questa regola */
+.qr-code {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 30px;
+}
+
+/* Stile per lo slider */
+.image-slider {
+  position: relative;
+  width: 100%; /* Imposta la larghezza al 100% della finestra */
+  height: 400px; /* Imposta l'altezza dello slider */
+  overflow: hidden; /* Nasconde le immagini che non sono visibili */
+  margin-bottom: 100px; /* Distanza sotto lo slider */
+}
+
+.image-slider .slide {
+  width: 100%; /* Ogni slide occupa il 100% della larghezza */
+  height: 100%; /* Ogni slide occupa tutta l'altezza del contenitore */
+  display: none; /* Nasconde le slide inizialmente */
+}
+
+.image-slider .slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantiene il rapporto di aspetto senza distorcere l'immagine */
+}
+
+/* Frecce di navigazione */
+button {
+  position: absolute;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 30px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prev {
+  left: 2px; /* Posiziona la freccia sinistra */
+}
+
+.next {
+  right: 2px; /* Posiziona la freccia destra */
+}
+
+button:hover {
+  background-color: rgba(71, 252, 0, 0.8); /* Cambia colore al passaggio del mouse */
+}
+
+.slider-section {
+  padding: 5px 5px;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.slide {
+  display: none;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 15px;
+}
+
+.slide.active {
+  display: block;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 28px;
+  transition: 0.3s;
+  border-radius: 0 3px 3px 0;
+  background-color: rgba(0,0,0,0.3);
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.6);
+}
+
+/* Effetto Palla da Spiaggia */
+.beach-ball-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.beach-ball {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,0.6) 0%, transparent 70%),
+    conic-gradient(
+      red 0deg 60deg,
+      white 60deg 120deg,
+      yellow 120deg 180deg,
+      blue 180deg 240deg,
+      white 240deg 300deg,
+      green 300deg 360deg
+    );
+  transform: translate(-50%, -50%) scale(0);
+  box-shadow: inset -8px -8px 10px rgba(0, 0, 0, 0.2),
+              0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.6s ease-in-out;
+  z-index: 1;
+  border: 3px solid white;
+}
+
+/* Bottone centrale */
+.beach-ball::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+}
+
+
+
+.beach-ball-effect:hover .beach-ball {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.beach-ball-effect:hover {
+  background-color: #ffe4f1; /* Sfondo rosa tenue */
+}
+
+.beach-ball-effect:hover h3 {
+  color: #ff1493;
+  text-shadow: 0 0 10px #ff69b4;
+}
+
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  z-index: 1000;
+  min-width: 140px;
+  top: 100%;
+  right: 0;
+}
+
+.dropdown-menu li {
+  padding: 0;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+

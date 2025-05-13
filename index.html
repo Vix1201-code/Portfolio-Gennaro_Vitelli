@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Gennaro Vitelli</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header id="header">
+    <nav class="navbar">
+      <div class="logo">Gennaro Vitelli</div>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="header-link">🏠 Home</a></li>
+        <li><a href="#chi-sono" class="header-link">👤 Chi sono</a></li>
+        <li><a href="#progetti" class="header-link">💻 Progetti</a></li>
+        <li class="dropdown">
+          <a href="#" class="header-link dropdown-toggle" style="font-size: 20px;">❓</a>
+          <ul class="dropdown-menu">
+            <li><a href="contatti.html">Contatti</a></li>
+            <li><a href="curriculum.pdf" target="_blank">Curriculum</a></li>
+          </ul>
+        </li>
+        
+    </nav>
+  </header>
+  
+  
+
+  <section id="home">
+    <h1 class="animated-text">Benvenuti nel mio Sito</h1>
+    <p class="animated-text">Salve, sono Gennaro Vitelli, studente dell'indirizzo informatico presso l'Istituto Carlo Levi di Portici (NA). In questo spazio, metto in evidenza il mio percorso PCTO e la mia passione per l'educazione civica, proponendo progetti, esperienze di apprendimento e riflessioni che uniscono tecnologia e impegno sociale.</p>
+  </section>
+
+  <section id="chi-sono">
+    <h2 class="animated-text">Chi Sono?</h2>
+    <p class="animated-text">Mi chiamo Gennaro Vitelli e la mia curiosità per l'informatica si intreccia con un forte interesse per la cittadinanza attiva. Attraverso il mio percorso scolastico e le esperienze pratiche del PCTO, ho appreso quanto sia fondamentale valorizzare sia le abilità tecniche sia la consapevolezza civica, per costruire il futuro con responsabilità e passione.</p>
+  </section>
+
+  <section id="progetti">
+    <h2 class="animated-text">Progetti</h2>
+    <a href="progetto1.html" class="progetto-link">
+      <div class="progetto sun-effect">
+        <div class="sky"></div>
+        <div class="sun"></div>
+        <h3 class="animated-text">Progetto 1: NetCom</h3>
+      </div>
+    </a>
+    <a href="progetto2.html" class="progetto-link">
+      <div class="progetto climate-effect">
+        <div class="climate-bg"></div>
+        <div class="leaf"></div>
+        <h3 class="animated-text">Progetto 2: Agenda 2030</h3>
+      </div>
+    </a>
+    <a href="progetto3.html" class="progetto-link">
+      <div class="progetto beach-ball-effect">
+        <div class="beach-ball"></div>
+        <h3 class="animated-text">Progetto 3: Capolavoro</h3>
+      </div>
+    </a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Gennaro Vitelli. Tutti i diritti riservati.</p>
+  </footer>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const animatedElements = document.querySelectorAll('.animated-text');
+      animatedElements.forEach((el, index) => {
+        el.style.animationDelay = `${0.3 * index}s`;
+        el.classList.add('animate');
+      });
+    });
+
+    // Scroll dinamico per header
+    let lastScrollY = 0;
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        header.classList.add('hidden');
+      } else {
+        header.classList.remove('hidden');
+      }
+      lastScrollY = window.scrollY;
+    });
+
+
+// Dropdown interattivo "?"
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const dropdown = document.querySelector('.dropdown');
+
+  dropdownToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    dropdown.classList.toggle('open');
+  });
+
+  // Chiudi il menu se clicchi altrove
+  window.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+    }
+  });
+});
+
+
+
+
+    // Menu hamburger
+    const toggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+
+</body>
+</html>

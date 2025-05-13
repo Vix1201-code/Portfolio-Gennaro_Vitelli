@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 2 - Agenda 2030</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    body {
+        background: url('climabg.jpg') center/cover no-repeat fixed;
+        position: relative;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* oscuro al 40% */
+        z-index: -1;
+    }
+</style>
+
+    
+</head>
+<body>
+    <!-- Header del sito con la navigazione -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Gennaro Vitelli</div>
+            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="header-link">🏠 Home</a></li>
+                <li><a href="index.html#chi-sono" class="header-link">👤 Chi sono</a></li>
+                <li><a href="index.html#progetti" class="header-link">💻 Progetti</a></li>
+                <li class="dropdown">
+                    <a href="#" class="header-link dropdown-toggle" style="font-size: 20px;">❓</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="contatti.html">Contatti</a></li>
+                      <li><a href="curriculum.pdf" target="_blank">Curriculum</a></li>
+                    </ul>
+                  </li>
+        </nav>                                  
+    </header>
+
+    <!-- Sezione Introduzione su Agenda 2030 -->
+    <section id="agenda-2030-introduction" class="animated-text animate">
+        <h2>What is the Agenda 2030?</h2>
+        <p>The Agenda 2030 for Sustainable Development, adopted by all United Nations Member States in 2015, provides a shared blueprint for peace and prosperity for people and the planet, now and into the future. It is built around 17 Sustainable Development Goals (SDGs), which are an urgent call to action for ending poverty, protecting the planet, and ensuring prosperity for all by 2030. These goals are integrated and balance the three dimensions of sustainable development: the economic, social, and environmental.</p>
+    </section>
+
+    <!-- Slider di immagini per il progetto -->
+<section class="image-slider">
+    <!-- Prima slide -->
+    <div class="slide">
+        <img src="image1.jpg" alt="Immagine 1" class="slider-image">
+    </div>
+    <!-- Seconda slide -->
+    <div class="slide">
+        <img src="image2.jpg" alt="Immagine 2" class="slider-image">
+    </div>
+    <!-- Terza slide -->
+    <div class="slide">
+        <img src="image3.jpg" alt="Immagine 3" class="slider-image">
+    </div>
+
+    <!-- Frecce di navigazione -->
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+</section>
+
+
+    <!-- Sezione sul Punto 13 dell'Agenda 2030 -->
+    <section id="agenda-2030-point13" class="animated-text animate">
+        <h2>Project 2: 13th point in the Agenda 2030</h2>
+        <p>One of the key goals of the Agenda 2030 is addressing climate change and its impacts. Goal 13 focuses on taking urgent action to combat climate change and its effects. This involves enhancing the capacity of countries to adapt to climate change, improve climate education, and implement global environmental agreements. During my PCTO experience at NetCom, I worked on developing a dashboard to monitor meteorological data, which directly ties into this goal. The project helped me understand the importance of real-time data in forecasting and addressing climate issues, making it an essential part of contributing to the achievement of Goal 13.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Gennaro Vitelli. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Scroll dinamico per la navbar
+        let lastScrollY = 0;
+        const header = document.querySelector('header'); // Seleziona l'header per farlo nascondere
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY) {
+                header.classList.add('hidden');  // Nasconde la navbar quando si scorre verso il basso
+            } else {
+                header.classList.remove('hidden');  // Mostra la navbar quando si scorre verso l'alto
+            }
+            lastScrollY = window.scrollY;
+        });
+
+
+        // Apri/chiudi menu mobile al clic sull'hamburger
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show'); // Aggiunge o rimuove la classe "show"
+        });
+    });
+
+
+// Variabili per le slide e le frecce
+let currentSlide = 0; // La slide che sarà visualizzata
+const slides = document.querySelectorAll('.image-slider .slide'); // Ottieni tutte le slide
+const prevButton = document.querySelector('.prev'); // Bottone per la freccia sinistra
+const nextButton = document.querySelector('.next'); // Bottone per la freccia destra
+
+// Funzione per mostrare la slide corrente
+function showSlide(index) {
+    // Nascondi tutte le slide
+    slides.forEach((slide) => {
+        slide.style.display = 'none';
+    });
+
+    // Mostra la slide corrente
+    slides[index].style.display = 'block';
+}
+
+// Funzione per passare alla slide successiva
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length; // Ciclo attraverso le slide
+    showSlide(currentSlide);
+}
+
+// Funzione per tornare alla slide precedente
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length; // Ciclo all'indietro
+    showSlide(currentSlide);
+}
+
+// Imposta l'evento per il bottone "precedente"
+prevButton.addEventListener('click', prevSlide);
+
+// Imposta l'evento per il bottone "successivo"
+nextButton.addEventListener('click', nextSlide);
+
+// Mostra la prima slide quando la pagina si carica
+showSlide(currentSlide);
+
+// Imposta un intervallo per cambiare automaticamente le immagini ogni 7 secondi
+setInterval(nextSlide, 7000);
+
+// Aggiungi un evento per fermare lo slideshow al passaggio del mouse
+const imageSlider = document.querySelector('.image-slider');
+imageSlider.addEventListener('mouseenter', () => {
+    clearInterval(nextSlide); // Ferma il cambio automatico delle slide
+});
+imageSlider.addEventListener('mouseleave', () => {
+    setInterval(nextSlide, 7000); // Riprendi il cambio automatico delle slide
+});
+
+
+// Dropdown interattivo "?"
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const dropdown = document.querySelector('.dropdown');
+
+  dropdownToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    dropdown.classList.toggle('open');
+  });
+
+  // Chiudi il menu se clicchi altrove
+  window.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+    }
+  });
+});
+
+
+    </script>
+</body>
+</html>

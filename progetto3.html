@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progetto 3 - Capolavoro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: url('sfondo_capolavoro.jpeg') center/cover no-repeat fixed;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Gennaro Vitelli</div>
+            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="header-link">🏠 Home</a></li>
+                <li><a href="index.html#chi-sono" class="header-link">👤 Chi sono</a></li>
+                <li><a href="index.html#progetti" class="header-link">💻 Progetti</a></li>
+                <li class="dropdown">
+                    <a href="#" class="header-link dropdown-toggle" style="font-size: 20px;">❓</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="contatti.html">Contatti</a></li>
+                      <li><a href="curriculum.pdf" target="_blank">Curriculum</a></li>
+                    </ul>
+                  </li>
+        </nav>                                  
+    </header>
+
+    <!-- Introduzione Capolavoro -->
+    <section id="capolavoro-introduction" class="animated-text animate">
+        <h2>Il mio Capolavoro</h2>
+        <p>Durante l’estate 2024 ho partecipato come volontario all’oratorio estivo "Che Gusto!" presso la Parrocchia Santa Maria della Libera a Portici (NA).
+            Ho svolto attività di supporto tecnico, occupandomi del montaggio, configurazione e assistenza su computer, microfoni, mixer audio e altre attrezzature. L’esperienza mi ha permesso di mettere in pratica competenze acquisite nel percorso di studi di Informatica, migliorando la mia capacità di problem solving, lavoro in team ed autonomia.</p>
+    </section>
+
+    <!-- Slider immagini Capolavoro -->
+    <section class="slider-section">
+        <div class="slider">
+            <div class="slide active">
+                <img src="spalti.jpeg" alt="Screenshot capolavoro 1">
+            </div>
+            <div class="slide">
+                <img src="squadra1.jpeg" alt="Screenshot capolavoro 2">
+            </div>
+            <div class="slide">
+                <img src="linguini.jpeg" alt="Screenshot capolavoro 3">
+            </div>
+            <div class="slide">
+            <img src="squadra2.jpeg" alt="Screenshot capolavoro 4">
+            </div>
+            <div class="slide">
+                <img src="remini.jpeg" alt="Screenshot capolavoro 5">
+            </div>
+            <div class="slide">
+                <img src="gioco.jpeg" alt="Screenshot capolavoro 6">
+            </div>
+            <div class="slide">
+                <img src="film.jpeg" alt="Screenshot capolavoro 7">
+            </div>
+            <div class="slide">
+                <img src="animatori.jpg" alt="Screenshot capolavoro 8">
+            </div>
+            <div class="slide">
+                <img src="famiglia.jpg" alt="Screenshot capolavoro 9">
+            </div>
+            <div class="slide">
+                <img src="mixer.jpeg" alt="Screenshot capolavoro 10">
+            </div>
+            <div class="slide">
+                <img src="microfonia-mixer.jpg" alt="Screenshot capolavoro 11">
+            </div>
+
+            <!-- Frecce -->
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+        </div>
+    </section>
+
+    <!-- Descrizione -->
+    <section id="descrizione-capolavoro" class="animated-text animate">
+        <h1 class="title">Progetto 3: Oratorio Estivo</h1>
+        <p class="project-description">Ho scelto quest’esperienza come capolavoro perché mi ha permesso di crescere sia nelle competenze tecniche che a livello umano. Ho potuto lavorare su attività pratiche nuove per me, migliorando la mia autonomia e capacità di problem solving. Ma soprattutto, ho scoperto una famiglia di persone eccezionali che mi hanno accolto, supportato e arricchito, rendendo questa esperienza indimenticabile.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Gennaro Vitelli. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll dinamico
+        let lastScrollY = 0;
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+            lastScrollY = window.scrollY;
+        });
+
+        // Menu mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('show');
+            });
+        });
+
+        // Slider immagini
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const prev = document.querySelector('.prev');
+        const next = document.querySelector('.next');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+            showSlide(slideIndex);
+        }
+
+        next.addEventListener('click', nextSlide);
+        prev.addEventListener('click', prevSlide);
+
+        showSlide(slideIndex);
+
+
+        // Dropdown interattivo "?"
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const dropdown = document.querySelector('.dropdown');
+
+  dropdownToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    dropdown.classList.toggle('open');
+  });
+
+  // Chiudi il menu se clicchi altrove
+  window.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+    }
+  });
+});
+
+
+    </script>
+</body>
+</html>

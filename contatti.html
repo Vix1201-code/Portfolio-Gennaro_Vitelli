@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatti - Gennaro Vitelli</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contatti-container {
+      max-width: 700px;
+      margin: 100px auto;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .contatti-container h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .contatti-container p, .contatti-container a {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .contatti-container a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    .contatti-container a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">Gennaro Vitelli</div>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="index.html#chi-sono">👤 Chi sono</a></li>
+        <li><a href="index.html#progetti">💻 Progetti</a></li>
+        <li><a href="curriculum.pdf" target="_blank">📄 Curriculum</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contatti-container">
+    <h1>Contattami</h1>
+    <p style="text-align:center">Se desideri metterti in contatto con me per collaborazioni, domande o opportunità, puoi farlo tramite i seguenti canali:</p>
+    
+    <p><strong>Email:</strong> <a href="mailto:gennarovitelli12@gmail.com">gennarovitelli12@gmail.com</a></p>
+    <p><strong>Telefono:</strong> <a href="tel:+393345775741">+39 3345775741</a></p>
+
+    <p>Oppure visita i miei profili social:</p>
+    <ul>
+      <li><a href="https://www.linkedin.com/in/tuo-nome" target="_blank">LinkedIn</a></li>      
+      <li><a href="https://www.instagram.com/gennyvix._" target="_blank">Instagram</a></li>   
+      <li><a href="https://twitter.com/tuo-nome" target="_blank">Twitter</a></li>
+      <li><a href="https://github.com/tuo-nome" target="_blank">GitHub</a></li>
+    </ul>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gennaro Vitelli. Tutti i diritti sono riservati.</p>
+  </footer>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const animatedElements = document.querySelectorAll('.animated-text');
+      animatedElements.forEach((el, index) => {
+        el.style.animationDelay = `${0.3 * index}s`;
+        el.classList.add('animate');
+      });
+    });
+
+    // Scroll dinamico per header
+    let lastScrollY = 0;
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > lastScrollY) {
+        header.classList.add('hidden');
+      } else {
+        header.classList.remove('hidden');
+      }
+      lastScrollY = window.scrollY;
+    });
+
+
+
+    // Menu hamburger
+    const toggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+
+
+</body>
+</html>

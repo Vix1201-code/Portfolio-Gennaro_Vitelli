@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progetto 1 - NetCom</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    body {
+        background: url('meteobg.jpg') center/cover no-repeat fixed;
+        position: relative;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* oscuro al 40% */
+        z-index: -1;
+    }
+</style>
+
+    
+</head>
+<body>
+    <!-- Header del sito con la navigazione -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Gennaro Vitelli</div>
+            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="header-link">🏠 Home</a></li>
+                <li><a href="index.html#chi-sono" class="header-link">👤 Chi sono</a></li>
+                <li><a href="index.html#progetti" class="header-link">💻 Progetti</a></li>
+                <li class="dropdown">
+                    <a href="#" class="header-link dropdown-toggle" style="font-size: 20px;">❓</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="contatti.html">Contatti</a></li>
+                      <li><a href="curriculum.pdf" target="_blank">Curriculum</a></li>
+                    </ul>
+                  </li>
+        </nav>                              
+
+    </header>
+
+    <!-- Sezione Introduzione su NetCom -->
+    <section id="netcom-introduction" class="animated-text animate">
+        <h2>Cos'è NetCom?</h2>
+        <p>NetCom è una realtà che si occupa di consulenza tecnologica, fornendo soluzioni innovative per il monitoraggio e la gestione dei dati. In particolare, l'azienda ha sviluppato una serie di piattaforme e applicazioni per l'analisi dei dati, la gestione remota di dispositivi IoT e la creazione di dashboard interattive. Durante il mio percorso di PCTO (Percorso per le Competenze Trasversali e l'Orientamento), ho avuto l'opportunità di collaborare con il team di NetCom per sviluppare una dashboard avanzata per il monitoraggio dei dati meteorologici.</p>
+    </section>
+
+    <!-- Sezione Progetto -->
+    <section id="progetto" class="animated-text animate">
+        <h1 class="title">Progetto 1: NetCom</h1>
+        <p class="project-description">Durante il percorso di PCTO con NetCom ho creato una dashboard per visualizzare e analizzare i dati meteorologici. L'obiettivo principale era offrire un'interfaccia utente semplice ma potente, in grado di presentare informazioni in tempo reale tramite grafici e mappe.</p>
+        
+        <p class="project-link-text">Puoi esplorare la dashboard dal link che trovi qui:
+            <a style="color: #00c4ff;" href="http://thingsboard.centroictbc.unisa.it/dashboard/8967f050-fe6f-11ef-901b-ed3c569d6e44?publicId=f1fc48a0-fe56-11ef-901b-ed3c569d6e44" target="_blank" class="dashboard-link">Vai alla Dashboard</a>
+        </p>
+    </section>
+
+    <section class="slider-section">
+        <h2>Durante il progetto:</h2>
+        <div class="slider">
+            <div class="slide active">
+                <img src="presentazione.jpeg">
+            </div>
+            <div class="slide">
+                <img src="balilla.jpeg">
+            </div>
+            <div class="slide">
+                <img src="frame.png">
+            </div>
+    
+            <!-- Frecce -->
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+        </div>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Gennaro Vitelli. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.animated-text');
+            animatedElements.forEach((el, index) => {
+                el.style.animationDelay = `${0.3 * index}s`;
+            });
+        });
+
+        // Scroll dinamico per la navbar
+    let lastScrollY = 0;
+    const header = document.querySelector('header'); // Seleziona l'header per farlo nascondere
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > lastScrollY) {
+            header.classList.add('hidden');  // Nasconde la navbar quando si scorre verso il basso
+        } else {
+
+     header.classList.remove('hidden');  // Mostra la navbar quando si scorre verso l'alto
+    }
+    lastScrollY = window.scrollY;
+});
+
+
+
+    // Apri/chiudi menu mobile al clic sull'hamburger
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show'); // Aggiunge o rimuove la classe "show"
+        });
+    });
+
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+    });
+}
+
+function nextSlide() {
+    slideIndex = (slideIndex + 1) % slides.length;
+    showSlide(slideIndex);
+}
+
+function prevSlide() {
+    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+    showSlide(slideIndex);
+}
+
+next.addEventListener('click', nextSlide);
+prev.addEventListener('click', prevSlide);
+
+// Avvio iniziale
+showSlide(slideIndex);
+
+
+
+// Dropdown interattivo "?"
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const dropdown = document.querySelector('.dropdown');
+
+  dropdownToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    dropdown.classList.toggle('open');
+  });
+
+  // Chiudi il menu se clicchi altrove
+  window.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+    }
+  });
+});
+
+
+    </script>
+    
+</body>
+</html>
